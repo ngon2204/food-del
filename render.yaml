@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: food-del
+    name: food-del-backend
     env: node
     buildCommand: npm install && npm run build
     startCommand: node server.js
