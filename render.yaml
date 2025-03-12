@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: food-del
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: node server.js
+    nodeVersion: 18.18.1

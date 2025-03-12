@@ -1,0 +1,75 @@
+.sidebar {
+  width: 18%;
+  min-height: 100vh;
+  border: 1.5px solid #a9a9a9;
+  border-top: 0;
+  font-size: max(1vw, 10px);
+  background-color: #fff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-options {
+  padding-top: 50px;
+  padding-left: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-option {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Remove center alignment */
+  gap: 12px;
+  border: 1px solid #a9a9a9;
+  padding: 12px 15px;
+  border-radius: 3px 0px 0px 3px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  width: 100%; /* Đảm bảo tất cả có cùng kích thước */
+  text-align: left; /* Align text to the left */
+  text-decoration: none;
+  color: inherit;
+}
+
+.sidebar-option p {
+  margin: 0;
+  flex-grow: 1; /* Đảm bảo chữ giãn đều */
+  text-align: left; /* Align text to the left */
+  font-weight: 500;
+  font-size: 14px; /* Set a fixed font size */
+  line-height: 1.5; /* Set a consistent line height */
+}
+
+.sidebar-option img,
+.sidebar-option svg {
+  margin-right: 10px;
+}
+
+.sidebar-option:hover {
+  background-color: #f0f0f0;
+}
+
+.sidebar-option.active {
+  background-color: #fff0ed;
+  border-color: tomato;
+}
+
+.sidebar-settings {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 25%;
+  }
+
+  .sidebar-option p {
+    display: inline;
+  }
+}

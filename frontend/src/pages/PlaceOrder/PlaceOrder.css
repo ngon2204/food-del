@@ -1,0 +1,116 @@
+.place-order {
+  /* Giảm khoảng cách so với trên, đồng thời giới hạn max-width để layout không trải rộng quá */
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 50px; /* giảm từ 50px còn 30px */
+  margin: 60px auto 40px; /* top: 60px, bottom: 40px, auto left-right để canh giữa */
+  max-width: 1000px; /* cho layout gọn gàng, không quá rộng */
+  padding: 0 20px; /* thêm chút padding ngang để nội dung không sát mép */
+}
+
+/* Cột bên trái (Thông Tin Giao Hàng) */
+.place-order-left {
+  flex: 1;
+  max-width: 480px; /* đủ rộng cho form, nhưng không quá to */
+}
+
+.place-order-left .title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 30px; /* giảm bớt so với 50px */
+}
+
+.place-order-left input {
+  margin-bottom: 10px; /* giảm bớt so với 15px */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #c5c5c5;
+  border-radius: 4px;
+  outline-color: tomato;
+}
+
+.place-order-left .multi-fields {
+  display: flex;
+  gap: 10px;
+}
+
+/* Cột bên phải (Tổng Giỏ Hàng) */
+.place-order-right {
+  flex: 1;
+  max-width: 480px; /* tương đương cột trái */
+}
+
+.place-order .cart-total button {
+  margin-top: 20px; /* giảm bớt so với 30px */
+}
+
+/* CSS cho phần phương thức thanh toán */
+.payment-method {
+  margin-top: 15px; /* giảm nhẹ margin top */
+  padding: 15px 20px;
+  border: 1px solid #c5c5c5;
+  border-radius: 6px;
+  background-color: #f8f8f8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.payment-method h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+  border-bottom: 1px solid #c5c5c5;
+  padding-bottom: 8px;
+}
+
+.payment-method label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #555;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+
+.payment-method label:hover {
+  background-color: #eaeaea; /* Hover nhẹ cho đẹp */
+}
+
+.payment-method input[type="radio"] {
+  margin-right: 8px;
+  accent-color: tomato; /* Nếu trình duyệt hỗ trợ */
+}
+/* CSS cho mobile */
+@media (max-width: 768px) {
+  .place-order {
+    flex-direction: column; /* Chuyển sang layout 1 cột */
+    gap: 20px; /* Giảm gap cho phù hợp với màn hình nhỏ */
+    margin: 30px auto; /* Điều chỉnh margin */
+  }
+
+  .place-order-left,
+  .place-order-right {
+    max-width: 100%; /* Chiếm toàn bộ chiều rộng */
+    padding: 0; /* Loại bỏ padding để tối ưu không gian */
+  }
+
+  .place-order-left .title {
+    font-size: 24px; /* Giảm font size */
+    margin-bottom: 20px;
+  }
+
+  .place-order-left input {
+    padding: 12px; /* Tăng padding để dễ chạm hơn */
+  }
+
+  .payment-method h3 {
+    font-size: 18px; /* Điều chỉnh font size */
+  }
+
+  .payment-method label {
+    font-size: 14px; /* Điều chỉnh font size */
+  }
+}

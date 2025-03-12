@@ -1,0 +1,35 @@
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "server": "nodemon server.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "@payos/node": "^1.0.10",
+        "@payos/payos-checkout": "^1.0.8",
+        "axios": "^1.7.9",
+        "bcrypt": "^5.1.1",
+        "body-parser": "^1.20.3",
+        "cors": "^2.8.5",
+        "crypto": "^1.0.1",
+        "dateformat": "^5.0.3",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.1",
+        "helmet": "^8.0.0",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^8.8.3",
+        "multer": "^1.4.5-lts.1",
+        "nodemon": "^3.1.7",
+        "querystring": "^0.2.1",
+        "socket.io": "^4.8.1",
+        "stripe": "^17.4.0",
+        "uuid": "^11.0.5",
+        "validator": "^13.12.0",
+        "vnpay": "^1.6.1"
+    }
+}
