@@ -11,7 +11,6 @@ import {
 } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
 import { toast } from "react-toastify"
-import { StoreContext } from "../../context/StoreContext"
 
 const LoginPopup = ({ open, onClose }) => {
   const [email, setEmail] = useState("")
