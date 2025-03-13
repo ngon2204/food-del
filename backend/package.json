@@ -7,6 +7,7 @@
     "postinstall": "npm rebuild bcrypt",
     "server": "nodemon server.js"
   },
+  "postinstall": "chmod +x ./node_modules/.bin/node-pre-gyp && npm rebuild bcrypt",
   "author": "",
   "license": "ISC",
   "description": "",
