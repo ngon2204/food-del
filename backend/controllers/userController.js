@@ -1,6 +1,6 @@
 import userModel from "../models/userModel.js" // Import model người dùng
 import jwt from "jsonwebtoken" // Import JWT để tạo token xác thực
-import bcrypt from "bcrypt" // Dùng bcrypt để mã hóa và so sánh mật khẩu
+import bcrypt from "bcryptjs" // Dùng bcrypt để mã hóa và so sánh mật khẩu
 import validator from "validator" // Dùng để kiểm tra định dạng email
 import addressModel from "../models/addressModel.js" // Import model địa chỉ
 
