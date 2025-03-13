@@ -18,7 +18,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete"
 import EditIcon from "@mui/icons-material/Edit"
 import AddIcon from "@mui/icons-material/Add"
-import { StoreContext } from "../context/StoreContext" // Đảm bảo đường dẫn đúng với file StoreContext của bạn
+import { StoreContext } from "../../context/StoreContext" // Đảm bảo đường dẫn đúng với file StoreContext của bạn
 
 const Address = () => {
   const [addresses, setAddresses] = useState([])
@@ -26,7 +26,7 @@ const Address = () => {
   const [newPhone, setNewPhone] = useState("")
   const [newAddress, setNewAddress] = useState("")
   const [editId, setEditId] = useState(null)
-  
+
   const { url } = useContext(StoreContext) // Lấy URL từ context
 
   const theme = useTheme()
