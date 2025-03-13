@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
 import axios from "axios"
 import {
   Dialog,
@@ -12,12 +12,10 @@ import {
 import CloseIcon from "@mui/icons-material/Close"
 import { toast } from "react-toastify"
 
-const LoginPopup = ({ open, onClose }) => {
+const LoginPopup = ({ open, onClose, url }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
-
-  const { url } = useContext(StoreContext) // Lấy URL từ context
 
   const handleLogin = async () => {
     try {
@@ -32,7 +30,7 @@ const LoginPopup = ({ open, onClose }) => {
             ? "Admin đăng nhập thành công!"
             : "Staff đăng nhập thành công!"
         toast.success(successMessage)
-        onClose(role) // Pass the role to onClose
+        onClose(role) // Truyền role cho hàm onClose
       } else {
         setError(response.data.message)
         toast.error("Đăng nhập thất bại: " + response.data.message)
