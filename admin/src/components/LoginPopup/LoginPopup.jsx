@@ -11,21 +11,20 @@ import {
 } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
 import { toast } from "react-toastify"
-import { StoreContext } from "../context/StoreContext" // Đảm bảo đường dẫn đúng
 
 const LoginPopup = ({ open, onClose }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
-  
+
   const { url } = useContext(StoreContext) // Lấy URL từ context
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(
-        `${url}/api/user/login`,
-        { email, password }
-      )
+      const response = await axios.post(`${url}/api/user/login`, {
+        email,
+        password
+      })
       if (response.data.success) {
         const role = response.data.role
         const successMessage =
