@@ -16,7 +16,7 @@
     "@payos/node": "^1.0.10",
     "@payos/payos-checkout": "^1.0.8",
     "axios": "^1.7.9",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
