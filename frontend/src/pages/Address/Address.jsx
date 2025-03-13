@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import axios from "axios"
 import {
   Container,
@@ -12,13 +12,13 @@ import {
   Paper,
   Box,
   Stack,
-  Grid,
   useMediaQuery,
   useTheme
 } from "@mui/material"
 import DeleteIcon from "@mui/icons-material/Delete"
 import EditIcon from "@mui/icons-material/Edit"
 import AddIcon from "@mui/icons-material/Add"
+import { StoreContext } from "../context/StoreContext" // Đảm bảo đường dẫn đúng với file StoreContext của bạn
 
 const Address = () => {
   const [addresses, setAddresses] = useState([])
@@ -26,26 +26,28 @@ const Address = () => {
   const [newPhone, setNewPhone] = useState("")
   const [newAddress, setNewAddress] = useState("")
   const [editId, setEditId] = useState(null)
+  
+  const { url } = useContext(StoreContext) // Lấy URL từ context
 
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/address", {
+      .get(`${url}/api/address`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
       })
       .then((res) => {
         if (res.data.success) setAddresses(res.data.addresses)
       })
       .catch((err) => console.error(err))
-  }, [])
+  }, [url])
 
   const addAddress = () => {
     if (!newName || !newPhone || !newAddress) return
     axios
       .post(
-        "http://localhost:4000/api/address",
+        `${url}/api/address`,
         { name: newName, phone: newPhone, address: newAddress },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
@@ -64,7 +66,7 @@ const Address = () => {
 
   const deleteAddress = (id) => {
     axios
-      .delete(`http://localhost:4000/api/address/${id}`, {
+      .delete(`${url}/api/address/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
       })
       .then((res) => {
@@ -91,7 +93,7 @@ const Address = () => {
     if (!newName || !newPhone || !newAddress) return
     axios
       .put(
-        `http://localhost:4000/api/address/${editId}`,
+        `${url}/api/address/${editId}`,
         { name: newName, phone: newPhone, address: newAddress },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
@@ -121,7 +123,7 @@ const Address = () => {
         sx={{ padding: isMobile ? 2 : 4, marginTop: 5, borderRadius: 3 }}
       >
         <Typography
-          variant="h5" // Điều chỉnh font size cho mobile
+          variant="h5"
           sx={{ textAlign: "center", fontWeight: "bold", marginBottom: 2 }}
         >
           Địa Chỉ Của Bạn
