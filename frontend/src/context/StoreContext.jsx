@@ -9,7 +9,7 @@ const StoreContextProvider = (prop) => {
   // State lưu trữ giỏ hàng: dạng object, key là itemId, value là số lượng
   const [cartItems, setCartItems] = useState({})
   // URL của server backend
-  const url = "http://localhost:4000"
+  const url = "https://food-del-backend-10v3.onrender.com"
   // State token lưu trữ JWT từ đăng nhập
   const [token, setToken] = useState("")
   // State lưu danh sách món ăn lấy từ API

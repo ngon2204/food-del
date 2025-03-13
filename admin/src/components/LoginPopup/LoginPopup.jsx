@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import axios from "axios"
 import {
   Dialog,
@@ -11,16 +11,19 @@ import {
 } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
 import { toast } from "react-toastify"
+import { StoreContext } from "../context/StoreContext" // Đảm bảo đường dẫn đúng
 
 const LoginPopup = ({ open, onClose }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
+  
+  const { url } = useContext(StoreContext) // Lấy URL từ context
 
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/user/login",
+        `${url}/api/user/login`,
         { email, password }
       )
       if (response.data.success) {
@@ -47,7 +50,6 @@ const LoginPopup = ({ open, onClose }) => {
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="xs" fullWidth>
-      {/* Tiêu đề với nút đóng */}
       <DialogTitle
         sx={{
           display: "flex",
@@ -61,7 +63,6 @@ const LoginPopup = ({ open, onClose }) => {
         </IconButton>
       </DialogTitle>
 
-      {/* Nội dung đăng nhập */}
       <DialogContent>
         {error && (
           <Typography color="error" sx={{ marginBottom: 2 }}>
