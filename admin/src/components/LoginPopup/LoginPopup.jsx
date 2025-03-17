@@ -12,17 +12,17 @@ import {
 import CloseIcon from "@mui/icons-material/Close"
 import { toast } from "react-toastify"
 
-const LoginPopup = ({ open, onClose, url }) => {
+const LoginPopup = ({ open, onClose }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(`${url}/api/user/login`, {
-        email,
-        password
-      })
+      const response = await axios.post(
+        "https://food-del-backend-10v3.onrender.com/api/user/login",
+        { email, password }
+      )
       if (response.data.success) {
         const role = response.data.role
         const successMessage =
@@ -47,6 +47,7 @@ const LoginPopup = ({ open, onClose, url }) => {
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="xs" fullWidth>
+      {/* Tiêu đề với nút đóng */}
       <DialogTitle
         sx={{
           display: "flex",
@@ -60,6 +61,7 @@ const LoginPopup = ({ open, onClose, url }) => {
         </IconButton>
       </DialogTitle>
 
+      {/* Nội dung đăng nhập */}
       <DialogContent>
         {error && (
           <Typography color="error" sx={{ marginBottom: 2 }}>
