@@ -17,7 +17,11 @@ const port = process.env.PORT || 4000
 
 // Các middleware
 app.use(express.json()) // Parse JSON body cho các request
-app.use(cors()) // Cho phép các request từ domain khác
+app.use(cors({
+  origin: 'https://food-del-admin-oxy1.onrender.com', // Cho phép frontend gọi
+  credentials: true // Nếu bạn dùng cookie, localStorage token, vv.
+}))
+// Cho phép các request từ domain khác
 
 // Kết nối cơ sở dữ liệu
 connectDB()
