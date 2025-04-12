@@ -13,7 +13,7 @@ import LoginPopup from "./components/LoginPopup/LoginPopup.jsx"
 import UserDetails from "./pages/User/UserDetails"
 
 const App = () => {
-  const url = "https://food-del-backend-10v3.onrender.com"
+  const url = "https://food-del-backend-fbe8.onrender.com"
   const [showLogin, setShowLogin] = useState(true)
   const [userRole, setUserRole] = useState("")
 
