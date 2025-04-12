@@ -20,7 +20,7 @@ const LoginPopup = ({ open, onClose }) => {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "https://food-del-backend-10v3.onrender.com/api/user/login",
+        "https://food-del-backend-fbe8.onrender.com/api/user/login",
         { email, password }
       )
       if (response.data.success) {
