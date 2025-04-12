@@ -79,11 +79,7 @@ const StoreContextProvider = (prop) => {
   // Khi component mount, load danh sách món ăn và token từ localStorage, sau đó load dữ liệu giỏ hàng nếu có token
   useEffect(() => {
     async function loadData() {
-    await fetchFoodList()
-       const storedToken = localStorage.getItem("token")
-       if (storedToken) {
-         setToken(storedToken)
-         await loadCartData(storedToken)
+
        }
     }
     loadData()
