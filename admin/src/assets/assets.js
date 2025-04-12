@@ -22,4 +22,4 @@ export const assets = {
   delivery_icon
 }
 
-export const url = "https://food-del-backend-10v3.onrender.com"
+export const url = "https://food-del-backend-fbe8.onrender.com"
