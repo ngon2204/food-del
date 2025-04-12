@@ -70,15 +70,15 @@ app.get("/api/order/updates", (req, res) => {
   })
 })
 
-// Serve static files from the React app (admin panel)
-// Định nghĩa __dirname để làm việc với đường dẫn tuyệt đối
-const __dirname = path.resolve()
-// Trả về các file tĩnh từ thư mục "admin/build"
-app.use(express.static(path.join(__dirname, "admin/build")))
-// Bất kỳ route nào không được định nghĩa sẽ trả về file index.html của React app
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "admin/build", "index.html"))
-})
+// // Serve static files from the React app (admin panel)
+// // Định nghĩa __dirname để làm việc với đường dẫn tuyệt đối
+// const __dirname = path.resolve()
+// // Trả về các file tĩnh từ thư mục "admin/build"
+// app.use(express.static(path.join(__dirname, "admin/build")))
+// // Bất kỳ route nào không được định nghĩa sẽ trả về file index.html của React app
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "admin/build", "index.html"))
+// })
 
 // Khởi động server và lắng nghe tại cổng đã định nghĩa
 app.listen(port, () => {
