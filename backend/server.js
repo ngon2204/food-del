@@ -17,11 +17,22 @@ const port = process.env.PORT || 4000
 
 // Các middleware
 app.use(express.json()) // Parse JSON body cho các request
-app.use(cors({
-  origin: 'https://food-del-admin-oxy1.onrender.com', // Cho phép frontend gọi
-  credentials: true // Nếu bạn dùng cookie, localStorage token, vv.
-}))
-// Cho phép các request từ domain khác
+const allowedOrigins = [
+  'https://food-del-admin-oxy1.onrender.com',
+  'https://food-del-frontend-fqzu.onrender.com'
+]
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Cho phép cả request không có origin (ví dụ như Postman)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  credentials: true // Cho phép gửi cookie, token
+}
 
 // Kết nối cơ sở dữ liệu
 connectDB()
