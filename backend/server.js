@@ -17,22 +17,8 @@ const port = process.env.PORT || 4000
 
 // Các middleware
 app.use(express.json()) // Parse JSON body cho các request
-const allowedOrigins = [
-  'https://food-del-admin-oxy1.onrender.com',
-  'https://food-del-frontend-fqzu.onrender.com'
-]
+app.use(cors()) // Cho phép các request từ domain khác
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Cho phép cả request không có origin (ví dụ như Postman)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  },
-  credentials: true // Cho phép gửi cookie, token
-}
 
 // Kết nối cơ sở dữ liệu
 connectDB()
@@ -70,15 +56,15 @@ app.get("/api/order/updates", (req, res) => {
   })
 })
 
-// // Serve static files from the React app (admin panel)
-// // Định nghĩa __dirname để làm việc với đường dẫn tuyệt đối
-// const __dirname = path.resolve()
-// // Trả về các file tĩnh từ thư mục "admin/build"
-// app.use(express.static(path.join(__dirname, "admin/build")))
-// // Bất kỳ route nào không được định nghĩa sẽ trả về file index.html của React app
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "admin/build", "index.html"))
-// })
+// Serve static files from the React app (admin panel)
+// Định nghĩa __dirname để làm việc với đường dẫn tuyệt đối
+const __dirname = path.resolve()
+// Trả về các file tĩnh từ thư mục "admin/build"
+app.use(express.static(path.join(__dirname, "admin/build")))
+// Bất kỳ route nào không được định nghĩa sẽ trả về file index.html của React app
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "admin/build", "index.html"))
+})
 
 // Khởi động server và lắng nghe tại cổng đã định nghĩa
 app.listen(port, () => {
